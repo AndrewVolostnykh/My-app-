@@ -9,8 +9,24 @@ Validation going on user Email.
 
 Last changes
 ---------------------
->(06.02.2020) At this moment application can register new users, login, show profile and show all users that registered.
-Now i have a problem with encoding, it mean that cyrillic symbols have bad displaying.
+
+>(07.02.2020)
+
+Today i have practiced HttpSession. With that class realised correct back-end logic. 
+  - Encoding problems solved
+  - Input data validation added
+  - Login and authentification fixed and working well (U can watch profile after login anytime)
+  - Wellcome to logined User in hedder
+  - New design solutions
+  
+--------------------
+
+>(06.02.2020)
+
+At this moment application can register new users, login, show profile and show all users that registered.
+Now i have a problem with encoding, it mean that cyrillic symbols have bad displaying. Profile button working only after login. If u reload page, profile will not display.
+
+------------------
 
 What in future?
 ---------------------
