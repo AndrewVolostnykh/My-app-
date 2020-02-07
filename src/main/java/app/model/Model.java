@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Model {
+
     private static Model instance = new Model();
 
     private List<User> model;
@@ -31,22 +32,14 @@ public class Model {
         return model.stream().map(User::toString).collect(Collectors.toList());
     }
 
-    public boolean duplicationCheck(User user)
-    {
-        return model.stream().anyMatch(u -> u.getEmail().equals(user.getEmail()));
-
+    public boolean duplicationCheck(User user) {
+//        return model.stream().anyMatch(u -> u.getEmail().equals(user.getEmail()));
+        for(User u : model)
+            if(u.getEmail().equals(user.getEmail())) return true;
+        return false;
     }
 
-    public User findUser(String email, String password)
-    {
-//        for(int i = 0; i < model.size(); i++)
-//        {
-//            if(model.get(i).getEmail().equals(email) & model.get(i).getPassword().equals(password))
-//            {
-//                return model.get(i);
-//            }
-//        }
-
+    public User findUser(String email, String password) {
         for (User u : model)
             if (u.getEmail().equals(email) & u.getPassword().equals(password)) return u;
         return null;

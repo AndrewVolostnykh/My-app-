@@ -5,10 +5,19 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <title>Users | My app:)</title>
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <style>
+            a { text-decoration: none; }
+        </style>
     </head>
     <body class="w3-light-grey">
-        <div class="w3-container w3-indigo w3-right-align">
-            <h1>My app :)</h1>
+        <div class="w3-container w3-right-align w3-indigo" >
+            <h1><a href="/webattempt_war_exploded/index.jsp">My app :)</a></h1>
+            <%if(request.getAttribute("name")!=null)
+            {
+                out.print("<h5 class=\"w3-text-sand \"><a href=\"/webattempt_war_exploded/profile\">Welcome, "+ request.getAttribute("name") +"</a></h5>");
+            } else {
+                out.print("<h3 class=\"w3-text-sand \"><a href=\"/webattempt_war_exploded/login\">Login</a></h3>");
+            }%>
         </div>
 
         <div class="w3-container w3-center w3-margin-bottom w3-padding">
@@ -26,7 +35,7 @@
                                 out.println("<li class=\"w3-hover-sand\">" + s + "</li>");
                             }
                             out.println("</ui>");
-                        } else out.println("<div class=\"w3-panel w3-red w3-display-container w3-card-4 w3-round\">\n"
+                        } else out.println("<div class=\"w3-panel w3-sand w3-display-container w3-card-4 w3-round\">\n"
                                 +
 
                                 "   <h5>There are no users yet!</h5>\n" +
@@ -38,7 +47,6 @@
         </div>
 
         <div class="w3-container w3-light-grey w3-opacity w3-right-align w3-padding">
-            <button class="w3-btn w3-round-large" onclick="location.href='/webattempt_war_exploded/'">Back to main</button>
         </div>
 
     </body>
