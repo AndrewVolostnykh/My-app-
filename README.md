@@ -18,7 +18,9 @@ Today i have practiced HttpSession. With that class realised correct back-end lo
   - Login and authentification fixed and working well (U can watch profile after login anytime)
   - Wellcome to logined User in hedder
   - New design solutions
-  
+![](howItLooks/AVprofile.PNG)
+![](howItLooks/IncorrectInput.PNG)
+![](howItLooks/loginAV.PNG)
 --------------------
 
 >(06.02.2020)
