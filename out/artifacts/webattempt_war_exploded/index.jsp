@@ -63,22 +63,38 @@
 
         <br>
             <div class="w3-container w3-center">
+                <!--
                 <h3>
                     Hi! I'm simple web application.
                 </h3>
-                    I have written on Java with Servlets, JSP, JDBC(PostgreSQL) and love.
-                <p>Here u can:</p>p>
+
+                <p>Here u can:</p>
                         >Create yourself profile.
                         >Login
                         >Logout or delete this profile
-                    In future u will can:
+                    <p>In future u will can:</p>
                         >Edit your profile
                         >Where create profile on email will sent message with validation link.
                         >Add photo
                         >Take communication in public chat
-                    Thank u that stopped by ;)
-
+                <p>Thank u that stopped by ;)</p>
+                -->
             </div>
+
+        <div  style="margin-left: 35%">
+            <h3 style="margin-left: 5%">Hi! I'm simple web application.</h3>
+            <p>I have written on Java with Servlets, JSP, JDBC(PostgreSQL) and love.</p>
+            <p>Here u can: </p>
+            <p style="margin-left: 5%">>Create yourself profile</p>
+            <p style="margin-left: 5%">>Login</p>
+            <p style="margin-left: 5%">>Logout or delete your profile</p>
+            <p>In future u will can:</p>
+            <p style="margin-left: 5%">>Edit your profile</p>
+            <p style="margin-left: 5%">>Where create profile on email will sent message with validation link.</p>
+            <p style="margin-left: 5%">>Add photo</p>
+            <p style="margin-left: 5%">>Take communication in public chat</p>
+
+        </div>
         <br>
 
         <div class="w3-container w3-center">       <!-- content -->

@@ -3,8 +3,9 @@ package app.utils;
 import app.entities.User;
 import app.model.Model;
 
-import javax.xml.transform.Result;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ModelUtils {
@@ -44,20 +45,20 @@ public class ModelUtils {
 
     public synchronized static List<String> listOfUsers() // dont work
     {
-        List<String> list = null;
-        int count = 0;
-        String temp;
+        List<String> list = new ArrayList<>();
+        String[] temp = new String[6];
         try {
             model.setConnection();
             ResultSet set = model.selectAllFromUser();
             while (set.next()) {
-                while(count <= 5)
+                int i = 1;
+                while(i <= 2)
                 {
-                    temp = " " + set.getString(count);
-                    count++;
+                    temp[i-1] = set.getString(i);
+                    i++;
                 }
-                temp = " " + set.getString(count);
-                list.add(temp);
+                temp[i-1] = set.getString(i);
+                list.add(temp[0] + ", " + temp[1]);
             }
             return list;
         } catch (Exception e){
