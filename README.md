@@ -10,6 +10,15 @@ Validation going on user Email.
 Last changes
 ---------------------
 
+>(08.02.2020)
+Today application have laid on PostgreSQL using JDBC.
+  - PostgreSQL and JDBC
+  - Logout button
+  - Delete profile
+ (closer and closer to CRUD
+ 
+---------------------
+
 >(07.02.2020)
 
 Today i have practiced HttpSession. With that class realised correct back-end logic. 
