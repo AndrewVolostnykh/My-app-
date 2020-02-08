@@ -1,7 +1,7 @@
 package app.servlets;
 
 import app.entities.User;
-import app.model.Model;
+import app.utils.ModelUtils;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -25,8 +25,7 @@ public class ListServlet extends HttpServlet {
             req.setAttribute("name", u.getName());
         }
 
-        Model model = Model.getInstance();
-        List<String> stringList = model.list();
+        List<String> stringList = ModelUtils.listOfUsers();
         req.setAttribute("userNames", stringList);
 
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("viewjsp/list.jsp");

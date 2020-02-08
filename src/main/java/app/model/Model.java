@@ -2,47 +2,73 @@ package app.model;
 
 import app.entities.User;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.sql.*;
 
 public class Model {
+    private Connection connection = null;
 
-    private static Model instance = new Model();
+    public void setConnection() {
+        try {
+            String name = "postgres";
+            String pass = "1679438520";
+            String dburl = "jdbc:postgresql://localhost:5432/my_app";
+            Class.forName("org.postgresql.Driver");
+            connection = DriverManager.getConnection(dburl, name, pass);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (Exception oe) {
+            System.err.println("LOG: Warning, " + oe);
+        }
+    }
 
-    private List<User> model;
+    public void insertNewUser(User user) {
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("insert into \"User\"(\"name\", \"email\", " +
+                    "\"password\", \"country\", \"birthDate\", \"gender\") values (?,?,?,?,?,?)");
+            preparedStatement.setString(1, user.getName());
+            preparedStatement.setString(2, user.getEmail());
+            preparedStatement.setString(3, user.getPassword());
+            preparedStatement.setString(4, user.getCountry());
+            preparedStatement.setString(5, user.getBirthDate());
+            preparedStatement.setString(6, user.getGender());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 
-    public static Model getInstance()
+    public void delteFromUser(String email)
     {
-        return instance;
+        try {
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("delete from \"User\" where email = " + "'" + email + "';");
+        } catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
     }
 
-    private Model()
+    public ResultSet selectFromUser(String email)
     {
-        model = new ArrayList<>();
-    }
-
-    public void add(User user)
-    {
-        model.add(user);
-    }
-
-    public List<String> list()
-    {
-        return model.stream().map(User::toString).collect(Collectors.toList());
-    }
-
-    public boolean duplicationCheck(User user) {
-//        return model.stream().anyMatch(u -> u.getEmail().equals(user.getEmail()));
-        for(User u : model)
-            if(u.getEmail().equals(user.getEmail())) return true;
-        return false;
-    }
-
-    public User findUser(String email, String password) {
-        for (User u : model)
-            if (u.getEmail().equals(email) & u.getPassword().equals(password)) return u;
+        try{
+            Statement statement = connection.createStatement();
+            return statement.executeQuery("select * from \"User\" where email = '" + email + "';");
+        } catch (SQLException e)
+        {
+            System.err.println("LOG: Warning, " + e);
+        }
         return null;
     }
 
+    public ResultSet selectAllFromUser()
+    {
+        try{
+            Statement statement = connection.createStatement();
+            return statement.executeQuery("select * from \"User\"");
+        } catch (Exception e)
+        {
+            System.err.println("LOG(MODEL/SELECTALL): Warning, " + e);
+        }
+        return null;
+    }
 }

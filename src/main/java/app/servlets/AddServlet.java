@@ -10,17 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 // handing queries by /add
 public class AddServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // CREATED ONLY FOR TESTING //
-        User user = new User("Andrij Volostnykh", "123456789", "zighalt790@gmail.com", "Ukraine", null, "male");
-        Model model = Model.getInstance(); model.add(user); // ONLY FOR TESTING !
-        // CREATED ONLY FOR TESTING //
 
         HttpSession session = req.getSession();
         User u = (User)session.getAttribute("email");
@@ -46,24 +40,30 @@ public class AddServlet extends HttpServlet {
         String date = req.getParameter("birthday"); // check, does it works
 
         User user = new User(name, password, email, country, date, gender);
-        Model model = Model.getInstance();
+        Model model = new Model();
+        model.setConnection();
 
         String validation = validator(user); // string that have message about fail validation
 
-        if(validation == null) {
-            if (model.duplicationCheck(user)) // block duplications
-            {
-                req.setAttribute("result", " User with same e-mail already registered! ");
-                doGet(req, resp);
-            } else {
-                model.add(user);
+        try {
+            if (validation == null) {
+                if (model.selectFromUser(user.getEmail()).next()) // block duplications
+                {
+                    req.setAttribute("result", " User with same e-mail already registered! ");
+                    doGet(req, resp);
+                } else {
+                    model.insertNewUser(user);
 
-                req.setAttribute("result", "Done! " + name + " registered! :)");
-                req.getRequestDispatcher("index.jsp").forward(req, resp);
+                    req.setAttribute("result", "Done! " + name + " registered! :)");
+                    req.getRequestDispatcher("index.jsp").forward(req, resp);
+                }
+            } else {
+                req.setAttribute("result", validation); // message about fail validation going to same page
+                doGet(req, resp);
             }
-        } else {
-            req.setAttribute("result", validation);
-            doGet(req, resp);
+        } catch (Exception e)
+        {
+            System.err.println("LOG(REG/POST): Warning, " + e);
         }
     }
 
@@ -81,4 +81,5 @@ public class AddServlet extends HttpServlet {
         }
         return null;
     }
+
 }

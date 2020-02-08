@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.Enumeration;
-
 
 //un-usable servlet at this moment
 @WebServlet(name = "UserProfile", urlPatterns = {"/profile"})
@@ -24,7 +22,7 @@ public class UserProfile extends HttpServlet {
 
         if(session.getAttribute("email") == null)
         {
-            req.setAttribute("redirection", "You must login.");
+            req.setAttribute("result", "You must login.");
             req.getRequestDispatcher("index.jsp").forward(req, resp);
         } else {
             req.setAttribute("name", u.getName());

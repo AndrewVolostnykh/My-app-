@@ -40,8 +40,14 @@
             </div>
         </div>
 
+        <br>
 
-        <div class="w3-container w3-light-grey w3-opacity w3-right-align w3-padding">
+        <div class="w3-container w3-light-grey w3-padding">
+            <button class="w3-btn w3-indigo w3-round-large" onclick="location.href='/webattempt_war_exploded/logout'">Logout</button>
+            <button class="w3-btn w3-pale-red w3-round-large" onclick="location.href='/webattempt_war_exploded/delete'">Delete profile</button>
+        </div>
+
+        <div class="w3-container w3-light-grey w3-padding w3-right-align">
         </div>
     </body>
 </html>

@@ -2,6 +2,7 @@ package app.servlets;
 
 import app.entities.User;
 import app.model.Model;
+import app.utils.ModelUtils;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -29,15 +30,15 @@ public class LoginServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
 
         req.setCharacterEncoding("utf-8");
 
         String email = req.getParameter("email");
         String password = req.getParameter("pass");
 
-        Model model = Model.getInstance();
-        User user = model.findUser(email, password);
+        Model model = new Model(); model.setConnection();
+        User user = ModelUtils.loginUser(email, password); // special util that checking user registration
 
         HttpSession session = req.getSession();
 
@@ -45,7 +46,7 @@ public class LoginServlet extends HttpServlet {
         {
             session.setAttribute("email", user);
             req.setAttribute("name", user.getName());
-            req.setAttribute("loginRedirect", "Welcome " + user.getName());
+            req.setAttribute("result", "Welcome " + user.getName());
             req.getRequestDispatcher("index.jsp").forward(req, resp);
 
         } else {

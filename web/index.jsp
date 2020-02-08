@@ -31,7 +31,8 @@
             }%>
         </div>
 
-        <% if(request.getAttribute("redirection") != null)
+        <% /*
+        if(request.getAttribute("redirection") != null)
         {
             out.println("<div class=\"w3-panel w3-sand w3-display-container w3-card-4\">\n" +
                     "   <span onclick=\"this.parentElement.style.display='none'\"\n" +
@@ -48,22 +49,35 @@
                     "   <h5>" + request.getAttribute("loginRedirect") + "</h5>\n" +
                     "</div>");
         }
-        %>
-
-        <% if(request.getAttribute("result") != null)
+        */
+         if(request.getAttribute("result") != null)
         {
             out.println("<div class=\"w3-panel w3-sand w3-display-container w3-card-4\">\n" +
                     "   <span onclick=\"this.parentElement.style.display='none'\"\n" +
                     "   class=\"w3-button w3-margin-right w3-display-right w3-round-large w3-hover-grey w3-border w3-border-sand w3-hover-border-grey\">×</span>\n" +
                     "   <h5>" + request.getAttribute("result") + "</h5>\n" +
                     "</div>");
-        } %>
+        }
+
+        %>
 
         <br>
             <div class="w3-container w3-center">
                 <h3>
-                    At this moment u can only create new account and check who already registered.
+                    Hi! I'm simple web application.
                 </h3>
+                    I have written on Java with Servlets, JSP, JDBC(PostgreSQL) and love.
+                <p>Here u can:</p>
+                        >Create yourself profile.
+                        >Login
+                        >Logout or delete this profile
+                    <p>In future u will can:</p>
+                        >Edit your profile
+                        >Where create profile on email will sent message with validation link.
+                        >Add photo
+                        >Take communication in public chat
+                <p>Thank u that stopped by ;)</p>
+
             </div>
         <br>
 
