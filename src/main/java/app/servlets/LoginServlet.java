@@ -30,28 +30,37 @@ public class LoginServlet extends HttpServlet {
     }
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException{
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         req.setCharacterEncoding("utf-8");
-
-        String email = req.getParameter("email");
-        String password = req.getParameter("pass");
-
-        Model model = new Model(); model.setConnection();
-        User user = ModelUtils.loginUser(email, password); // special util that checking user registration
-
         HttpSession session = req.getSession();
 
-        if(user != null)
-        {
-            session.setAttribute("email", user);
-            req.setAttribute("name", user.getName());
-            req.setAttribute("result", "Welcome " + user.getName());
-            req.getRequestDispatcher("index.jsp").forward(req, resp);
+        if (session.getAttribute("email") == null) { // check are user have already logged in
+            String email = req.getParameter("email");
+            String password = req.getParameter("pass");
 
+            Model model = new Model();
+            model.setConnection();
+            User user = ModelUtils.loginUser(email, password); // special util that checking user registration
+
+            if (user != null) { // check are user input correct email and pass
+                if (ModelUtils.isActive(user.getEmail())) { // check are user account activate
+                    session.setAttribute("email", user);
+                    req.setAttribute("name", user.getName());
+                    req.setAttribute("result", "Welcome " + user.getName());
+                    req.getRequestDispatcher("index.jsp").forward(req, resp);
+                } else {
+                    req.setAttribute("fail", "You must activate your profile. ");
+                    doGet(req, resp);
+                }
+            } else {
+                req.setAttribute("fail", "Incorrect email or password. ");
+                doGet(req, resp);
+            }
         } else {
-            req.setAttribute("fail", "Incorrect email or password. ");
+            req.setAttribute("fail", "You must log out at first. ");
             doGet(req, resp);
         }
+
     }
 }

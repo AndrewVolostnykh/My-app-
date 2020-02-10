@@ -2,6 +2,7 @@ package app.servlets;
 
 import app.entities.User;
 import app.model.Model;
+import app.utils.ModelUtils;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -16,6 +17,7 @@ public class AddServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+        // Greeting with user
         HttpSession session = req.getSession();
         User u = (User)session.getAttribute("email");
         if (session.getAttribute("email") != null)
@@ -32,6 +34,7 @@ public class AddServlet extends HttpServlet {
 
         req.setCharacterEncoding("utf-8"); // using to correct save input data
 
+        // handing input params
         String name = req.getParameter("name");
         String password = req.getParameter("pass");
         String email = req.getParameter("email");
@@ -39,12 +42,14 @@ public class AddServlet extends HttpServlet {
         String country = req.getParameter("country");
         String date = req.getParameter("birthday"); // check, does it works
 
+        // creating new user
         User user = new User(name, password, email, country, date, gender);
         Model model = new Model();
         model.setConnection();
 
         String validation = validator(user); // string that have message about fail validation
 
+        // block of adding user in db after all checks
         try {
             if (validation == null) {
                 if (model.selectFromUser(user.getEmail()).next()) // block duplications
@@ -53,8 +58,9 @@ public class AddServlet extends HttpServlet {
                     doGet(req, resp);
                 } else {
                     model.insertNewUser(user);
+                    ModelUtils.setActivationCode(user.getEmail()); // method that create activation code for email and call method to send this message
 
-                    req.setAttribute("result", "Done! " + name + " registered! :)");
+                    req.setAttribute("result", name + ", check your email to confirm registration.");
                     req.getRequestDispatcher("index.jsp").forward(req, resp);
                 }
             } else {

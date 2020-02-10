@@ -60,27 +60,7 @@
         }
 
         %>
-
-        <br>
-            <div class="w3-container w3-center">
-                <!--
-                <h3>
-                    Hi! I'm simple web application.
-                </h3>
-
-                <p>Here u can:</p>
-                        >Create yourself profile.
-                        >Login
-                        >Logout or delete this profile
-                    <p>In future u will can:</p>
-                        >Edit your profile
-                        >Where create profile on email will sent message with validation link.
-                        >Add photo
-                        >Take communication in public chat
-                <p>Thank u that stopped by ;)</p>
-                -->
-            </div>
-
+        <!-- Description of this project -->
         <div  style="margin-left: 37%">
             <h3 style="margin-left: 5%">Hi! I'm simple web application.</h3>
             <p>I have written on Java with Servlets, JSP, JDBC(PostgreSQL) and love.</p>
@@ -93,11 +73,10 @@
             <p style="margin-left: 5%">>Where create profile on email will sent message with validation link.</p>
             <p style="margin-left: 5%">>Add photo</p>
             <p style="margin-left: 5%">>Take communication in public chat</p>
-
         </div>
         <br>
 
-        <div class="w3-container w3-center">       <!-- content -->
+        <div class="w3-container w3-center">
             <div>    <!-- buttons holder -->
                 <button class="w3-btn w3-grey w3-round-large" onclick="location.href='/webattempt_war_exploded/list'">List users</button>
                 <button class="w3-btn w3-blue w3-round-large" onclick="location.href='/webattempt_war_exploded/add'">Registration</button>

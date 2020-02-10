@@ -8,6 +8,7 @@ public class User {
     private String country;
     private String birthDate;
     private String gender;
+    private boolean active;
 
     private int id; // it is hashCode
 
@@ -78,6 +79,15 @@ public class User {
     {
         return id;
     }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
 
     @Override
     public String toString() {
