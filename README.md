@@ -9,6 +9,9 @@ Validation going on user Email.
 
 Last changes
 ---------------------
+>(10.02.2020)
+Added confirmation of registration by email
+  - Login bug fixed
 
 >(08.02.2020)
 Today application have laid on PostgreSQL using JDBC.
