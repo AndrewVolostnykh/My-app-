@@ -15,6 +15,7 @@ public class ModelUtils {
 
     /**Deprecated method, that was check are same user
      * already saved in DB*/
+    @Deprecated
     public synchronized static boolean checkDuplication(User user) // not using
     {
         try {

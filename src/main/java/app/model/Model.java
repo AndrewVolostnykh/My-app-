@@ -4,10 +4,15 @@ import app.entities.User;
 
 import java.sql.*;
 
+// In this class written all request-methods of DB
+// Cause my DB is not so big, i've dont singled out UserDao and ActivationDao
+/*In this class i using synchronized methods, this id bad practice (synchronized
+ * using more machine-resources than ReentrantLocker for ex.), but this project created for have
+ * own social-network with my friends, and will not use by many people.*/
 public class Model {
     private Connection connection = null;
 
-    public void setConnection() {
+    public synchronized void setConnection() {
         try {
             String name = "postgres";
             String pass = "1679438520";
@@ -21,7 +26,7 @@ public class Model {
         }
     }
 
-    public void insertNewUser(User user) {
+    public synchronized void insertNewUser(User user) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("insert into \"User\"(\"name\", \"email\", " +
                     "\"password\", \"country\", \"birthDate\", \"gender\", \"active\") values (?,?,?,?,?,?,?)");
@@ -38,7 +43,7 @@ public class Model {
         }
     }
 
-    public void deleteFromUser(String email)
+    public synchronized void deleteFromUser(String email)
     {
         try {
             Statement statement = connection.createStatement();
@@ -49,7 +54,7 @@ public class Model {
         }
     }
 
-    public ResultSet selectFromUser(String email)
+    public synchronized ResultSet selectFromUser(String email)
     {
         try{
             Statement statement = connection.createStatement();
@@ -61,7 +66,7 @@ public class Model {
         return null;
     }
 
-    public ResultSet selectAllFromUser()
+    public synchronized ResultSet selectAllFromUser()
     {
         try{
             Statement statement = connection.createStatement();
@@ -73,7 +78,7 @@ public class Model {
         return null;
     }
 
-    public void updateUser(String email, String column, boolean value)
+    public synchronized void updateUserActive(String email, String column, boolean value)
     {
         try {
             Statement statement = connection.createStatement();
@@ -84,7 +89,19 @@ public class Model {
         }
     }
 
-    public ResultSet selectFromActivation(String email)
+    public synchronized void updateUser(String email, String column, String value)
+    {
+        try {
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("update \"User\" set \"" + column + "\"='" + value + "' where email='" + email +"';");
+        } catch (SQLException e)
+        {
+            //System.err.println("LOG(Model/UpdU): Warning, "+e);
+            e.printStackTrace();
+        }
+    }
+
+    public synchronized ResultSet selectFromActivation(String email)
     {
         try{
             Statement statement = connection.createStatement();
@@ -96,7 +113,7 @@ public class Model {
         return null;
     }
 
-    public void insertIntoActivation(String email, String activationCode)
+    public synchronized void insertIntoActivation(String email, String activationCode)
     {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("insert into \"Activation\"(\"email\", \"activationCode\") values (?,?);");

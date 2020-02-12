@@ -25,31 +25,13 @@
             {
                 out.print("<h5 class=\"w3-text-sand \"><a href=\"/webattempt_war_exploded/profile\">Welcome, "+ request.getAttribute("name") +"</a></h5>");
             } else if (u != null){
-                out.print("<h3 class=\"w3-text-sand \"><a href=\"/webattempt_war_exploded/login\">Welcome, " + u.getName() + "</a></h3>");
+                out.print("<h3 class=\"w3-text-sand \"><a href=\"/webattempt_war_exploded/profile\">Welcome, " + u.getName() + "</a></h3>");
             } else {
                 out.print("<h3 class=\"w3-text-sand \"><a href=\"/webattempt_war_exploded/login\">Login</a></h3>");
             }%>
         </div>
 
-        <% /*
-        if(request.getAttribute("redirection") != null)
-        {
-            out.println("<div class=\"w3-panel w3-sand w3-display-container w3-card-4\">\n" +
-                    "   <span onclick=\"this.parentElement.style.display='none'\"\n" +
-                    "   class=\"w3-button w3-margin-right w3-display-right w3-round-large w3-hover-grey w3-border w3-border-sand w3-hover-border-grey\">×</span>\n" +
-                    "   <h5>" + request.getAttribute("redirection") + "</h5>\n" +
-                    "</div>");
-        }
-
-        if(request.getAttribute("loginRedirect") != null)
-        {
-            out.println("<div class=\"w3-panel w3-sand w3-display-container w3-card-4\">\n" +
-                    "   <span onclick=\"this.parentElement.style.display='none'\"\n" +
-                    "   class=\"w3-button w3-margin-right w3-display-right w3-round-large w3-hover-grey w3-border w3-border-sand w3-hover-border-grey\">×</span>\n" +
-                    "   <h5>" + request.getAttribute("loginRedirect") + "</h5>\n" +
-                    "</div>");
-        }
-        */
+        <%
          if(request.getAttribute("result") != null)
         {
             out.println("<div class=\"w3-panel w3-sand w3-display-container w3-card-4\">\n" +
@@ -61,18 +43,15 @@
 
         %>
         <!-- Description of this project -->
-        <div  style="margin-left: 37%">
-            <h3 style="margin-left: 5%">Hi! I'm simple web application.</h3>
-            <p>I have written on Java with Servlets, JSP, JDBC(PostgreSQL) and love.</p>
-            <p>Here u can: </p>
-            <p style="margin-left: 5%">>Create yourself profile</p>
-            <p style="margin-left: 5%">>Login</p>
-            <p style="margin-left: 5%">>Logout or delete your profile</p>
-            <p>In future u will can:</p>
-            <p style="margin-left: 5%">>Edit your profile</p>
-            <p style="margin-left: 5%">>Where create profile on email will sent message with validation link.</p>
-            <p style="margin-left: 5%">>Add photo</p>
-            <p style="margin-left: 5%">>Take communication in public chat</p>
+        <div class="w3-row">
+            <div class="w3-col m3 "></div>
+            <div class="w3-col m6 ">
+                <p><h2>Hi! Welcome to me.</h2></p>
+                <p>I`m simple application.</p>
+                <p>Please, register here, confirm your email,
+                and test this web site. My developer will be very thankful for this :) </p>
+            </div>
+            <div class="w3-col m3 "></div>
         </div>
         <br>
 

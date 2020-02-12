@@ -21,7 +21,7 @@ public class EmailVerificationServlet extends HttpServlet {
         model.setConnection();
 
         if(ModelUtils.activationCodeCheck(email, code)) { // method that check code and email matching
-            model.updateUser(email, "active", true); // if code correct - set account activation on "true"
+            model.updateUserActive(email, "active", true); // if code correct - set account activation on "true"
             req.setAttribute("result", "Successfully activated! ");
             req.getRequestDispatcher("index.jsp").forward(req, resp);
         } else {
