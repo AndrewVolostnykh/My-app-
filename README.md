@@ -9,6 +9,12 @@ Validation going on user Email.
 
 Last changes
 ---------------------
+
+>(15.02.2020)
+Final in CRUD and Servlets
+ -User can change name, birthdate and password.
+ -Added help page. 
+
 >(10.02.2020)
 Added confirmation of registration by email
   - Login bug fixed
