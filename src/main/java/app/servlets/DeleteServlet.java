@@ -22,6 +22,7 @@ public class DeleteServlet extends HttpServlet {
 
         if (u != null) {
             model.deleteFromUser(u.getEmail());
+
             session.removeAttribute("email");
             req.setAttribute("result", "It's so sad that you go out, " + u.getName());
             req.getRequestDispatcher("index.jsp").forward(req, resp);

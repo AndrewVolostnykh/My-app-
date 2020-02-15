@@ -20,7 +20,7 @@ public class UpdateProfileServlet extends HttpServlet {
         User u = (User)session.getAttribute("email");
         if (session.getAttribute("email") != null)
         {
-            req.setAttribute("user", u.getName());
+            req.setAttribute("user", u);
             req.setAttribute("email", u.getEmail());
         } else {
             req.setAttribute("result", "You must login. ");
@@ -36,16 +36,20 @@ public class UpdateProfileServlet extends HttpServlet {
 
         String email = req.getParameter("email");
         String name = req.getParameter("name");
-
-        System.out.println(name + " and " + email);
+        String birthday = req.getParameter("birthday");
 
         Model model = new Model();
         model.setConnection();
 
         if(model.selectFromUser(email) != null)
         {
-            model.updateUser(email, "name", name);
-            req.setAttribute("result", "Success, " + name + ". You must re-login, to see your new name");
+            if (name != null) {
+                model.updateUser(email, "name", name);
+            }
+            if(birthday != null) {
+                model.updateUser(email, "birthDate", birthday);
+            }
+            req.setAttribute("result", "Success, " + name + ". You must re-login, to see your news");
             req.getRequestDispatcher("index.jsp").forward(req,resp);
         } else {
             req.setAttribute("result", "Wow its a problem. You may be not logged in?");

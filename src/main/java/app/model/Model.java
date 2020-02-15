@@ -125,4 +125,15 @@ public class Model {
             System.err.println("LOG(Model/insActiv): Warning, " + e);
         }
     }
+
+    public synchronized void deleteFromActiovation(String email)
+    {
+        try{
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("delete from \"Activation\" where email = " + "'" + email + "';");
+        } catch (SQLException e)
+        {
+            System.err.println("LOG(Model/delActiv): Warning, " + e);
+        }
+    }
 }

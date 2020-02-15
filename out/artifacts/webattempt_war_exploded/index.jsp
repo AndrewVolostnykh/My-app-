@@ -13,6 +13,15 @@
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <style>
             a { text-decoration: none; }
+            .footer {
+                position: fixed;
+                left: 0;
+                bottom: 0;
+                width: 100%;
+                background-color: #2196F3;
+                color: white;
+                text-align: center;
+            }
         </style>
     </head>
     <body class="w3-light-grey">
@@ -63,5 +72,8 @@
                 <button class="w3-btn w3-blue w3-round-large" onclick="location.href='/webattempt_war_exploded/profile'">Profile</button>
             </div>
         </div>
+        <footer class="footer">
+            <h3><a href="/webattempt_war_exploded/have_problem">Have any problem? Click on me!</a></h3>
+        </footer>
     </body>
 </html>
