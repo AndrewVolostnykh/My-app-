@@ -19,14 +19,27 @@
             }%>
         </div>
         <br><br>
+        <div class="w3-container w3-padding">
+            <div class="w3-card-4">
+                <div class="w3-container w3-center w3-blue">
+                    <h2>Edit profile</h2>
+                </div>
+            <form method="post" action="/webattempt_war_exploded/update_profile" class="w3-selection w3-light-grey w3-padding">
+                <label>New name:
+                    <input type="text" name="name" class="w3-input w3-animate-input w3-border w3-round-large"
+                           value="<%out.print(request.getAttribute("user"));%>"
+                           style="width: 30%"/>
 
-        <form method="post" action="/webattempt_war_exploded/update_profile">
-            <label>New name:<input type="text" name="name"/></label>
-            <input type="text" hidden name="email" value="<%out.print(request.getAttribute("email"));%>"/>
-            <input type="submit" value="Edit" name="Edit"><br>
-        </form>
+                </label>
+                <br>
 
-        <br>
+                <input type="text" hidden name="email" value="<%out.print(request.getAttribute("email"));%>"/>
+
+                <button class="w3-btn w3-blue w3-round-large w3-margin-bottom" type="submit">Submit</button>
+            </form>
+            </div>
+            <br>
+        </div>
 
         <div class="w3-container w3-light-grey w3-padding w3-right-align">
         </div>

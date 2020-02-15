@@ -20,7 +20,7 @@ public class UpdateProfileServlet extends HttpServlet {
         User u = (User)session.getAttribute("email");
         if (session.getAttribute("email") != null)
         {
-            req.setAttribute("user", u);
+            req.setAttribute("user", u.getName());
             req.setAttribute("email", u.getEmail());
         } else {
             req.setAttribute("result", "You must login. ");

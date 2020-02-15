@@ -44,14 +44,14 @@
         %>
         <!-- Description of this project -->
         <div class="w3-row">
-            <div class="w3-col m3 "></div>
+            <div class="w3-col m3 w3-center"><p>   </p></div>
             <div class="w3-col m6 ">
-                <p><h2>Hi! Welcome to me.</h2></p>
+                <p><h2>Hi! Welcome to me.</h2>
                 <p>I`m simple application.</p>
                 <p>Please, register here, confirm your email,
                 and test this web site. My developer will be very thankful for this :) </p>
             </div>
-            <div class="w3-col m3 "></div>
+            <div class="w3-col m3 w3-center"><p>   </p></div>
         </div>
         <br>
 
