@@ -18,8 +18,8 @@ class EmailUtil {
         properties.put("mail.smtp.host", "smtp.gmail.com");
         properties.put("mail.smtp.port", "587");
 
-        String myAccount = "zighalt790@gmail.com";
-        String myPass = "andrew1679438520";
+        String myAccount = "-";
+        String myPass = "-";
 
         Session session = Session.getInstance(properties, new Authenticator() {
             @Override

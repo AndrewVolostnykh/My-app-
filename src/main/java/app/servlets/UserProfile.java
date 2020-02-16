@@ -34,6 +34,7 @@ public class UserProfile extends HttpServlet {
 
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("viewjsp/profile.jsp");
             requestDispatcher.forward(req, resp);
+
         }
     }
 

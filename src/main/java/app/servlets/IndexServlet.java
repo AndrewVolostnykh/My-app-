@@ -15,6 +15,8 @@ import java.io.IOException;
 public class IndexServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("UTF-8");
+
         HttpSession session = req.getSession();
         User u = (User)session.getAttribute("email");
         if (session.getAttribute("email") != null)

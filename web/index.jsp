@@ -18,7 +18,7 @@
                 left: 0;
                 bottom: 0;
                 width: 100%;
-                background-color: #2196F3;
+                background-color: #3F51B5;
                 color: white;
                 text-align: center;
             }
@@ -51,7 +51,7 @@
         }
 
         %>
-        <!-- Description of this project -->
+
         <div class="w3-row">
             <div class="w3-col m3 w3-center"><p>   </p></div>
             <div class="w3-col m6 ">
@@ -65,11 +65,12 @@
         <br>
 
         <div class="w3-container w3-center">
-            <div>    <!-- buttons holder -->
+            <div>
                 <button class="w3-btn w3-grey w3-round-large" onclick="location.href='/webattempt_war_exploded/list'">List users</button>
                 <button class="w3-btn w3-blue w3-round-large" onclick="location.href='/webattempt_war_exploded/add'">Registration</button>
                 <button class="w3-btn w3-blue w3-round-large" onclick="location.href='/webattempt_war_exploded/login'">Login</button>
                 <button class="w3-btn w3-blue w3-round-large" onclick="location.href='/webattempt_war_exploded/profile'">Profile</button>
+                <button class="w3-btn w3-blue w3-round-large" onclick="location.href='/webattempt_war_exploded/blog'">Blog</button>
             </div>
         </div>
         <footer class="footer">

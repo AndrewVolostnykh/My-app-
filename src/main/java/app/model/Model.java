@@ -25,7 +25,7 @@ public class Model {
             System.err.println("LOG: Warning, " + oe);
         }
     }
-
+    // ======================User block ===========================================//
     public synchronized void insertNewUser(User user) {
         try {
             PreparedStatement preparedStatement = connection.prepareStatement("insert into \"User\"(\"name\", \"email\", " +
@@ -100,7 +100,7 @@ public class Model {
             e.printStackTrace();
         }
     }
-
+// ======================Activation block ===========================================//
     public synchronized ResultSet selectFromActivation(String email)
     {
         try{
@@ -136,4 +136,46 @@ public class Model {
             System.err.println("LOG(Model/delActiv): Warning, " + e);
         }
     }
+    // ======================Blog block ===========================================//
+
+    public synchronized ResultSet selectFromBlog(String blogauthor)
+    {
+        try{
+            Statement statement = connection.createStatement();
+            return statement.executeQuery("select * from \"Blog\" where \"blogAuthor\" = '" + blogauthor + "';");
+        } catch(SQLException e)
+        {
+            System.err.println("LOG(blog): Warning, " + e);
+        }
+        return null;
+    }
+
+    public synchronized void insertIntoBlog(String blogauthor, String message, long dateOfPost)
+    {
+        try{
+            PreparedStatement preparedStatement = connection.prepareStatement("insert into \"Blog\"(\"blog_message\",\"date_of_post\",\"blogAuthor\") " +
+                                                                                            "values (?,?,?);");
+            preparedStatement.setString(1, message);
+            preparedStatement.setDate(2, new Date(dateOfPost));
+            preparedStatement.setString(3, blogauthor);
+            preparedStatement.executeUpdate();
+
+        } catch(SQLException e)
+        {
+            System.err.println("LOG(blog): Warning, " + e);
+        }
+    }
+
+    public synchronized void deleteFromBlog(String blogauthor, Date dateOfPost)
+    {
+        try{
+            Statement statement = connection.createStatement();
+            statement.executeUpdate("delete from \"Blog\" where blogAuthor = '" + blogauthor + "' and date_of_post = '" + dateOfPost + "';");
+        } catch(SQLException e)
+        {
+            System.err.println("LOG(blog): Warning, " + e);
+        }
+    }
+
+
 }
