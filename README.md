@@ -50,8 +50,5 @@ Now i have a problem with encoding, it mean that cyrillic symbols have bad displ
 
 What in future?
 ---------------------
-- Now as model are Collections - List of Strings XD, but in future i will connect PostgresDB and use JDBC to add users, photos, other
-- Realise CRUD, it means that user can delete his page or update some information about him, for example.
-- Add page with user posts.
 - Add to user photos and display that with posts and in profile. 
 - May be add public or/and private chat. 
